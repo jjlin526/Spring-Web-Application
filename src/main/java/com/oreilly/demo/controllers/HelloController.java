@@ -14,7 +14,8 @@ public class HelloController {
             // map param query string to name
             @RequestParam(value = "name", required = false, defaultValue="World") String name, Model model) {
         model.addAttribute("user", name); // look for hello.html in src/main/resources/templates
+        // model carried along automatically, string turned into file
         return "hello";
-        // spring takes all attributes from model; adds them to http servlet request and forward it to destination
+        // spring takes all attributes from model; adds them to HttpServletRequest and forward it to destination
     }
 }
