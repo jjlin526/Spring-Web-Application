@@ -3,7 +3,11 @@ package com.oreilly.demo.json;
 // wrapper for string
 // class is to serialize into JSON form and deserialized on the response
 public class Greeting {
-    private final String message;
+    private String message;
+
+    public Greeting() {
+
+    }
 
     public Greeting(String message) {
         this.message = message;
