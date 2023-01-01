@@ -40,5 +40,6 @@ class DemoApplicationTests {
         System.out.println(greeting2.getMessage());
         // singleton, spring manages single object; all else is references
         assertSame(greeting1, greeting2);
+        System.out.println(greeting1);
     }
 }

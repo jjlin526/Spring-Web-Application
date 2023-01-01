@@ -1,10 +1,7 @@
 package com.oreilly.demo.json;
 
-import org.springframework.stereotype.Component;
-
 // wrapper for string
 // class is to serialize into JSON form and deserialized on the response
-@Component
 public class Greeting {
     private String message;
 
