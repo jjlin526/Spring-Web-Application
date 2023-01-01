@@ -33,11 +33,8 @@ class DemoApplicationTests {
 
     @Test
     void getBeanTwice() {
-        Greeting greeting1 = context.getBean(Greeting.class);
-        Greeting greeting2 = context.getBean(Greeting.class);
-
-        greeting1.setMessage("What up?");
-        System.out.println(greeting2.getMessage());
+        Greeting greeting1 = context.getBean("defaultGreeting", Greeting.class);
+        Greeting greeting2 = context.getBean("defaultGreeting", Greeting.class);
         // singleton, spring manages single object; all else is references
         assertSame(greeting1, greeting2);
         System.out.println(greeting1);
