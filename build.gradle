@@ -19,6 +19,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.0.1'
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
