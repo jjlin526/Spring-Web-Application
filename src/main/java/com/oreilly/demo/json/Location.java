@@ -8,7 +8,7 @@ public class Location {
         return lat;
     }
 
-    public void setLate(double lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 

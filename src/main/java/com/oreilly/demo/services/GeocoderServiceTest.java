@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// test annotation
 @SpringBootTest
 public class GeocoderServiceTest {
     // many logging APIs: log4j, slf4j, logback, etc.
@@ -32,7 +33,7 @@ public class GeocoderServiceTest {
 
     @Test
     public void getLatLngWithStreet() throws Exception {
-        Site site = service.getLatLng("1600 Ampitheatre Parkway", "Mountain View", "CA");
+        Site site = service.getLatLng("1600 Amphitheatre Parkway", "Mountain View", "CA");
         logger.info(site.toString());
         assertAll(
                 () -> assertEquals(37.42, site.getLatitude(), 0.01),

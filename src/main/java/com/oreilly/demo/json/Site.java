@@ -7,7 +7,9 @@ public class Site {
     private double latitude;
     private double longitude;
 
-    public Site() {}
+    public Site() {
+
+    }
 
     public Site(String address, double latitude, double longitude) {
         this.address = address;

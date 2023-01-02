@@ -2,6 +2,7 @@ package com.oreilly.demo.services;
 
 import com.oreilly.demo.json.Response;
 import com.oreilly.demo.json.Site;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -18,6 +19,7 @@ public class GeocoderService {
 
     private final WebClient client;
 
+    @Autowired
     public GeocoderService(WebClient.Builder builder) {
         client = builder.baseUrl("https://maps.googleapis.com").build();
     }
