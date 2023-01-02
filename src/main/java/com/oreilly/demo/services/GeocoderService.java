@@ -24,8 +24,12 @@ public class GeocoderService {
 
     // formulated the complete URL with an encoded address and convert it to a Response object, using Java 11
     public Site getLatLng(String... address) { // take variable number of string arguments
+        // use factory method to create a stream from a var ags parameter (address array)
+        // a stream is a sequence of elements that can be processed sequentially or in parallel
+        // this allows filtering, mapping, reducing, or collecting
         String encoded = Stream.of(address)
         .map(component -> URLEncoder.encode(component, StandardCharsets.UTF_8)) // encode the address components
+                // concatenate into single string
                 .collect(Collectors.joining(","));
         String path = "/maps/api/geocode/json";
         Response response = client.get()
