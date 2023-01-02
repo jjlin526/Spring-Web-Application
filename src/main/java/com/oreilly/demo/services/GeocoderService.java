@@ -28,21 +28,25 @@ public class GeocoderService {
         // a stream is a sequence of elements that can be processed sequentially or in parallel
         // this allows filtering, mapping, reducing, or collecting
         String encoded = Stream.of(address)
-        .map(component -> URLEncoder.encode(component, StandardCharsets.UTF_8)) // encode the address components
-                // concatenate into single string
+        .map(component -> URLEncoder.encode(component, StandardCharsets.UTF_8)) // encode the address components using lambda
+                // perform terminal operation - concatenate the stream of strings into a single string
                 .collect(Collectors.joining(","));
         String path = "/maps/api/geocode/json";
+        // make GET request using WebClient
         Response response = client.get()
                 // append encoded address and an API key to the base URL of the WebClient
-                .uri(uriBuilder -> uriBuilder.path(path)
+                .uri(uriBuilder -> uriBuilder.path(path) // set path of URL
+                        // add query parameters to the URI and return UriBuilder object for method chaining
                         .queryParam("address", encoded)
                         .queryParam("key", KEY)
+                        // build the URI using the accumulated path and query parameters, return as URI object
                         .build())
-                // make HTTP GET request to the constructed URL
+                // initiate HTTP GET request using the constructed URL to the server - returns a ResponseSpec object
                 .retrieve()
-                // convert response to a Response object
+                // convert ResponseSpec object to a Mono object (reactive type that represents a promise to a Response object)
+                // this uses the reactive extension 'bodyToMono' method of the ResponseSpec object
                 .bodyToMono(Response.class)
-                // wait for the response to be returned for a specified duration
+                // wait for the response to be returned for a specified duration using utility method
                 .block(Duration.ofSeconds(2));
         // return a Site object using the formatted address and lat/long
         return new Site(response.getFormattedAddress(),
