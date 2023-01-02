@@ -33,11 +33,14 @@ public class AstroService {
         return template.getForObject(url, AstroResult.class);
     }
 
-    // asynchronous
+    // asynchronous (but does not look asynchronous! looks synchronous)
+    // no longer blocked on I/O, scales well -- use instead of RestTemplate
+    // a small number of threads can handle a large number of requests because threads are never idle
+    // reactive: get back a mono (promise for single object) or flux (promise for a collection of objects)
     public AstroResult getAstronautsWC() {
         return client.get() // GET request
                 .uri("/astros.json") // appended to base URL
-                .accept(MediaType.APPLICATION_JSON) // set request header
+                .accept(MediaType.APPLICATION_JSON) // set request header for response format
                 .retrieve() // schedule retrieve
                 .bodyToMono(AstroResult.class) // convert body to mono of AstroResult
                 // wait max of 2 seconds to return AstroResult, or else return null
