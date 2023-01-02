@@ -29,4 +29,14 @@ public class GeocoderServiceTest {
                 () -> assertEquals(-71.06, site.getLongitude(), 0.01)
         );
     }
+
+    @Test
+    public void getLatLngWithStreet() throws Exception {
+        Site site = service.getLatLng("1600 Ampitheatre Parkway", "Mountain View", "CA");
+        logger.info(site.toString());
+        assertAll(
+                () -> assertEquals(37.42, site.getLatitude(), 0.01),
+                () -> assertEquals(-122.08, site.getLongitude(), 0.01)
+        );
+    }
 }
