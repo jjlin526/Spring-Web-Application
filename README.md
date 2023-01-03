@@ -1,4 +1,4 @@
-# 🍃 Spring Web Applications
+# 🍃 Spring Web Application
 * Views built using Thymeleaf templating engine
 * Complete with unit (JUnit5), integration (MockMVC) and functional tests
 * Used WebClient (part of Spring WebFlux module) to perform HTTP requests to the Open Notify API to request the names of astronauts on board the ISS and the number of people in space
